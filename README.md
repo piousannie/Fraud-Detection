@@ -134,3 +134,33 @@ The Dropout layer is a regularization technique that helps to prevent overfittin
 The Flatten layer is used to convert the output of the convolutional layers into a 1D vector, which can be fed to the fully connected layers for classification. It essentially flattens the multi-dimensional tensor output into a one-dimensional tensor by collapsing all the dimensions into one.
 
 The Dense layer is a fully connected layer that connects every neuron in the current layer to every neuron in the previous layer. It is the final layer of the network that outputs the predicted class probabilities. In the credit card fraud detection model, the Dense layer has a single output neuron with a sigmoid activation function, which outputs a probability score between 0 and 1 that indicates the likelihood of the transaction being fraudulent or not. The sigmoid function is defined as f(x) = 1 / (1 + exp(-x)), which maps the output of the Dense layer to a probability score.
+
+## Performance Measures
+
+### Threshhold Metrics
+
+In a typical credit card transaction dataset, the majority of the transactions are legitimate, while only a very small fraction of them are fraudulent. For example, in a dataset with a fraud rate of 1%, if the classifier always predicts "not fraud", it can still achieve a high accuracy of 99%, even though it completely fails to detect any fraud cases.
+
+In other words, accuracy can be misleading in such cases and may not provide a complete picture of the model's performance. Instead, other evaluation metrics such as precision, recall, and F1-score are more appropriate for assessing the performance of CCFD models.
+
+Precision measures the fraction of predicted fraud cases that are actually fraudulent, while recall measures the fraction of actual fraudulent cases that are correctly identified by the model. The F1-score is the harmonic mean of precision and recall, and it provides a balanced evaluation of both metrics.
+
+Results for RFC:
+
+![App Screenshot](https://i.postimg.cc/RVgHN3rD/accuracy-rfc.png)
+
+Results for Decision Tree:
+
+![App Screenshot](https://i.postimg.cc/bNynyx5n/accuracy-dt.png)
+
+### Threshfree Metrics
+
+However even after doing undersampling, we see that the performance metrics have improved. Now this might be correct but before drawing any conclusion about our model we need to understand the performance metrics in use. The recall, specificity, precision, and F1 score metrics, also known as threshold-based metrics, have well-known limitations due to their dependence on a decision threshold which is difficult to determine in practice, and strongly depends on the business-specific constraints. Hence to present an appropriate image of our model we need to use threshhold free metrics such as AUC ROC and AP, for our analysis.
+
+The ROC AUC score tells us how efficient the model is. The higher the AUC, the better the model's performance at distinguishing between the positive and negative classes. An AUC score of 1 means the classifier can perfectly distinguish between all the Positive and the Negative class points.
+
+Even though the accuracies for the two models are similar, the model with the higher AUC score will be more reliable because it takes into account the predicted probability. It is more likely to give you higher accuracy when predicting future data.
+
+Results for RFC and Decision Tree:
+
+![App Screenshot](https://i.postimg.cc/kMF8P1T9/auc.png)
