@@ -16,7 +16,7 @@ The schema can be summarised by the following diagram:
 ![App Screenshot](https://i.postimg.cc/v8pBnDfZ/baseline-ML-workflow-subset.png)
 ## Finding the dataset
 
-Credit card fraud is a relatively rare event, and the prevalence of fraudulent transactions is low compared to legitimate transactions. This means that datasets are usually imbalanced, with a vast majority of transactions being legitimate, making it difficult to identify the patterns and features of fraudulent transactions. 
+Credit card fraud is a relatively rare event, and the prevalence of fraudulent transactions is low compared to legitimate transactions. This means that datasets are usually imbalanced, with a vast majority of transactions being legitimate, making it difficult to identify the patterns and features of fraudulent transactions. \
 
 Over that ,financial institutions and merchants are reluctant to share their transaction data due to privacy and security concerns. As a result, datasets are often limited in size and may not represent the full spectrum of fraudulent activities.
 
@@ -56,7 +56,7 @@ The third type of transformation involves the terminal ID and consists in creati
 
 The simulator for transaction data has been released as part of the practical handbook on Machine Learning for Credit Card Fraud Detection - https://fraud-detection-handbook.github.io/fraud-detection-handbook/Chapter_3_GettingStarted/SimulatedDataset.html.
 ## Resampling the data
-In credit card fraud detection, the number of fraudulent transactions is often much smaller than the number of non-fraudulent transactions. This means that if a model is trained on an imbalanced dataset, it may have a bias towards the majority class (i.e., non-fraudulent transactions), and may not be able to accurately detect fraudulent transactions.
+n credit card fraud detection, the number of fraudulent transactions is often much smaller than the number of non-fraudulent transactions. This means that if a model is trained on an imbalanced dataset, it may have a bias towards the majority class (i.e., non-fraudulent transactions), and may not be able to accurately detect fraudulent transactions.
 
 Resampling can help to address this issue by balancing the number of samples in each class. There are two main approaches to resampling: oversampling and undersampling.
 
@@ -120,4 +120,17 @@ When applied to the fraud detection problem, the architecture is designed as fol
         1. At the beginning of the network, the neurons take as input the characteristics of a credit card transaction, i.e. the features that were defined in the previous chapters.
 
         2. At the end, the network outputs a single neuron that aims at representing the probability for the input transaction to be a fraud.
-"# Fraud-Detection" 
+        
+We can stack multiple convolutional layers with batch normalization, ReLU, and dropout to extract more abstract and high-level features from the input sequence. Finally, we use a fully connected layer with a sigmoid activation function to output a probability score indicating the likelihood of the transaction being fraudulent or not.
+
+The Conv1D layer is the core building block of the convolutional neural network. It is a 1-dimensional convolutional layer that performs a convolution operation on the input data to extract local patterns or features. In the case of credit card fraud detection, the input data is a sequence of transactions, and the Conv1D layer scans this sequence of transactions with a fixed-sized kernel to extract patterns of features that are relevant to fraud detection. The output of the Conv1D layer is a feature map that contains a set of learned filters.
+
+The BatchNormalization layer is a normalization technique that improves the stability and convergence of the network by normalizing the activations of the previous layer. It works by normalizing the inputs to have zero mean and unit variance, which reduces the internal covariate shift and helps the network to converge faster. In the case of credit card fraud detection, the BatchNormalization layer is used after the Conv1D layer to normalize the activations of the filters before applying the activation function.
+
+The Activation layer applies an activation function to the output of the previous layer to introduce non-linearity into the network. The ReLU activation function is the most commonly used activation function in deep learning, and it is used in the credit card fraud detection model as well. The ReLU activation function is defined as f(x) = max(0, x), which means that the output is zero for negative inputs and linear for positive inputs.
+
+The Dropout layer is a regularization technique that helps to prevent overfitting by randomly dropping out some of the neurons in the network during training. The Dropout layer randomly sets a fraction of the input units to zero at each update during training time, which forces the network to learn more robust features and reduces the dependence on any single feature.
+
+The Flatten layer is used to convert the output of the convolutional layers into a 1D vector, which can be fed to the fully connected layers for classification. It essentially flattens the multi-dimensional tensor output into a one-dimensional tensor by collapsing all the dimensions into one.
+
+The Dense layer is a fully connected layer that connects every neuron in the current layer to every neuron in the previous layer. It is the final layer of the network that outputs the predicted class probabilities. In the credit card fraud detection model, the Dense layer has a single output neuron with a sigmoid activation function, which outputs a probability score between 0 and 1 that indicates the likelihood of the transaction being fraudulent or not. The sigmoid function is defined as f(x) = 1 / (1 + exp(-x)), which maps the output of the Dense layer to a probability score.
