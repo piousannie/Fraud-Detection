@@ -16,7 +16,7 @@ The schema can be summarised by the following diagram:
 ![App Screenshot](https://i.postimg.cc/v8pBnDfZ/baseline-ML-workflow-subset.png)
 ## Finding the dataset
 
-Credit card fraud is a relatively rare event, and the prevalence of fraudulent transactions is low compared to legitimate transactions. This means that datasets are usually imbalanced, with a vast majority of transactions being legitimate, making it difficult to identify the patterns and features of fraudulent transactions. \
+Credit card fraud is a relatively rare event, and the prevalence of fraudulent transactions is low compared to legitimate transactions. This means that datasets are usually imbalanced, with a vast majority of transactions being legitimate, making it difficult to identify the patterns and features of fraudulent transactions. 
 
 Over that ,financial institutions and merchants are reluctant to share their transaction data due to privacy and security concerns. As a result, datasets are often limited in size and may not represent the full spectrum of fraudulent activities.
 
@@ -56,7 +56,7 @@ The third type of transformation involves the terminal ID and consists in creati
 
 The simulator for transaction data has been released as part of the practical handbook on Machine Learning for Credit Card Fraud Detection - https://fraud-detection-handbook.github.io/fraud-detection-handbook/Chapter_3_GettingStarted/SimulatedDataset.html.
 ## Resampling the data
-n credit card fraud detection, the number of fraudulent transactions is often much smaller than the number of non-fraudulent transactions. This means that if a model is trained on an imbalanced dataset, it may have a bias towards the majority class (i.e., non-fraudulent transactions), and may not be able to accurately detect fraudulent transactions.
+In credit card fraud detection, the number of fraudulent transactions is often much smaller than the number of non-fraudulent transactions. This means that if a model is trained on an imbalanced dataset, it may have a bias towards the majority class (i.e., non-fraudulent transactions), and may not be able to accurately detect fraudulent transactions.
 
 Resampling can help to address this issue by balancing the number of samples in each class. There are two main approaches to resampling: oversampling and undersampling.
 
